@@ -2,6 +2,12 @@ import mongoose from "mongoose";
 
 mongoose.set("strictQuery", true);
 
-mongoose.connect(process.env.MONGO_URI, () => {
-  console.log("Database is runnnig");
-});
+export const connectDb = () => {
+  try {
+    mongoose.connect(process.env.MONGO_URI, () => {
+      console.log("Database is runnnig");
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
